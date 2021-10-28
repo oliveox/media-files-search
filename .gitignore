@@ -147,11 +147,8 @@ yarn-debug.log*
 yarn-error.log*
 
 ### Custom
-
-.clinic/
-/dist
+dist/
 .vscode/
-/public
 Notes
 workdir/
 declarations/
