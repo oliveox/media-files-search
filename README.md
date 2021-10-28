@@ -1,4 +1,4 @@
-# Media Filesystem (digiKam extension)
+# Media Files Search (digiKam extension)
 Look through media files (images/videos/audio) using any search combination between DigiKam tags, files metadata (e.g. ISO, width, size), file type, filename
 
 # How to use it
@@ -29,7 +29,7 @@ Only `SELECT` queries are made between this project and the DigiKam SQLite datab
         - `cd src/server`
         - `npm install`
         - `npm start`
-- open browser, go to localhost:3000
+- open browser, go to `localhost:3000`
 - have fun!
 
 ## Functionalities
