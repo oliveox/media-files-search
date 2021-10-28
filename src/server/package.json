@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect dist/app.js",
+    "build": "tsc -p tsconfig.json",
+    "dev": "ts-node-dev src/services/filePersist.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/multer": "^1.4.5",
+    "any-shell-escape": "^0.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "exifreader": "3.16.0",
+    "express": "^4.17.1",
+    "ffprobe-client": "^1.1.6",
+    "file-type": "^15.0.1",
+    "multer": "^1.4.2",
+    "music-metadata": "^7.4.0",
+    "piscina": "^2.1.0",
+    "poolifier": "^1.2.1",
+    "sequelize": "^6.3.5",
+    "sharp": "^0.26.1",
+    "sqlite3": "5.0.2",
+    "systeminformation": "^5.9.8",
+    "threads": "^1.6.3",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
+    "@types/express": "^4.17.9",
+    "@types/node": "^14.14.7",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.0.5",
+    "nodemon": "latest"
+  }
+}
