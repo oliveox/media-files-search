@@ -1,47 +1,66 @@
-# Screenshots
+# Media Filesystem (digiKam extension)
+Look through media files (images/videos/audio) using any search combination between DigiKam tags, files metadata (e.g. ISO, width, size), file type, filename
 
 # How to use it
-
-## Functionalities
-- search by media files metadata
-- serach by their digikam categories
-- search by filename
-- combine filename, metadata and categories search
-- get search result (as symbolik links) in a path available file manager (e.g.nautilis, explorer etc.)
-- upload files from another (non-digikam) path
-    - won't have the categories available on it
-- 
+Only `SELECT` queries are made between this project and the DigiKam SQLite database, thus no modifications are made to it.
 
 ## Prerequisites
 - PostgreSQL
+- FFmpeg
+- NodeJS
 
 ## Install steps
-- create symlink in public folder to local media files
-- create symlink to config folder
-- create database
+- clone repo
+- `cd` in the repo
+- copy `.env.example` to `.env`
+- go to `src/ui/public`
+    - create `media` symlink to digiKam collection folder required to be named `media`. E.g. `ln -s /digikam/media media`
+    - create `config` symlink to config folder required to be named `config` (*CONFIG_FOLDER_NAME* in `.env`). E.g. `mklink /D config /path/set/in/env/config`
+    - directory symlink creation commands (would probably need priviledges)
+        - linux (bash): `ln -s Target Link`
+        - windows (CMD): `mklink /D Link Target`
+- start a PostgreSQL server and enter its data in the `.env` file parameters
+- now, let's open 2 terminals both the UI and Server:
+    - terminal 1: UI
+        - `cd src/ui`
+        - `npm install`
+        - `npm start`
+    - terminal 2: Server
+        - `cd src/server`
+        - `npm install`
+        - `npm start`
+- open browser, go to localhost:3000
+- have fun!
 
-Windows: mklink /D config D:\Code\media-manager\workdir\config
+## Functionalities
+- search by:
+    - media files metadata
+    - digikam categories
+    - filename
+    - media file type
+- get search result (as symbolik links) in a path available file manager (e.g.nautilis, explorer etc.)
+- upload files from another (non-digikam) path
+    - won't have the categories available on it
 
-!!! config_folder_path should have as last directory a folder called as config_folder_name
+# Support
+- DigiKam tags (also called *categories*) functionality doesn't work if tags contain '`_`' (underscores)
 
-* Description
-Smart search through personal media files (images / videos / audio) based on image classification, object detection & speech 2 text or manual the labeling using DigiKam and its open SQLite DB.
+## Operating systems
+- Linux (tested on Ubuntu 20.04)
+- Windows (tested on Windows 10)
 
-* Tech Stack
-- Node
-- React
-- Tensforflow
-- SQLite
+## Why does this repo exist?
+- learn / practice nodejs, reactjs and typescript
+- trying to integrate some of the DigiKam functionalities in a new platform with extra features
 
-!!! doesn't work if tags contain underscore
+# Contribute
+Drop an issue if you have any questions, suggestions or observations. Other not yet implemented cool features I've been thinking about can be found in the TODO file or in code marked with // TODO.
 
 ## About the code
-- parallelization with worker/master
+- media files are processed using multi-threading
 - project doesn't modify the DigiKam SQLite database at all
 - aggregated metadata per media file type (image, video, audio)
 - creates preview gifs from videos with ffmpeg
-- parallel processing of media files using workers
 
-## Why does this repo exist?
-- practice some nodejs, reactjs and typescript
-- trying to create some new digikam features that I would neet
+# Credits
+- [Digikam](https://www.digikam.org)
